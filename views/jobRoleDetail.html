@@ -25,19 +25,19 @@
             <h2 style = "text-align: center;">{{ jobRole.roleName }}</h2>
             <ul>
                 <li>
-                   <h4 style="font-family:''Galano Grotesque', sans-serif';"><i class="fa fa-map-marker " aria-hidden="true"></i> {{ jobRole.location }}</h4>
+                   <h3 style="font-family:''Galano Grotesque', sans-serif';"><i class="fa fa-map-marker " aria-hidden="true"></i> {{ jobRole.location }}</h3>
 
-                    <h3>Description</h3>
+                    <h4>Description</h4>
                     <p>{{ jobRole.description }}</p>
 
-                    <h3>Responsibilities</h3>
+                    <h4>Responsibilities</h4>
                     <p>{{ jobRole.responsibilities }}</p>
 
                 
                     <p><b>Capability: </b>{{ jobRole.capability }}</p>
                     <p><b>Band: </b>{{ jobRole.band }}</p>
                     <p><b>Closing Date:</b> {{ jobRole.closingDate | date }}</p>
-                    <p><a href="{{ jobRole.jobSpec }}" target="_blank">Click here to see job specification</a></p>
+                    <p><a title="Sharepoint link to job spec" href="{{ jobRole.jobSpec }}" target="_blank">Click here to see job specification</a></p>
                     
                 </li>
             </ul>
