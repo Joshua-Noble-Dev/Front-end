@@ -20,6 +20,10 @@ export const getJobRoleById = async (id: string): Promise<JobRole> => {
     try {
         const response: AxiosResponse = await axios.get(URL + id);
 
+        if(response.data.status != "open") {
+            return null;
+        }
+
         return response.data;
     } catch (e) { 
         if(e.response.status == 404) {
