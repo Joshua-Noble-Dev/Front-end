@@ -1,4 +1,4 @@
 export type Band = {
-    bandId: Number,
+    bandID: Number,
     bandName: String
 } 

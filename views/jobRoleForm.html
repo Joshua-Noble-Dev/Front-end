@@ -18,8 +18,6 @@
             <section class="job-roles"> 
                 <h2 style="text-align: center; font-size:325%;">Create a Role</h2>
                 
-                <ul> 
-                    <li> 
                         <form class="form" action="/jobRoleForm" method="post">
                             <h3 style="font-size:235%;">
                                 <label for="name">
@@ -87,15 +85,10 @@
                             </h3> 
                             <input id="jobSpec" name="jobSpec" value="{{jobSpec}}" type="text">
 
+                            <button class="govuk-button" id="submit">Submit</button>
+                            
                         </form>
-                        <h3 style="font-size:235%;">{{ jobRole.roleName }}</h3> 
-                        <h4 style="font-family:''Galano Grotesque', sans-serif';"><i class="fa fa-map-marker " aria-hidden="true"></i> {{ jobRole.location }}</h4>
-                        <p><b>Capability: </b>{{ jobRole.capability }}</p> 
-                        <p><b>Band: </b>{{ jobRole.band }}</p> 
-                        <p><b>Closing Date: </b>{{ jobRole.closingDate | date }}</p> 
-                        <p><b>Status: </b>{{ jobRole.status }}</p> 
-                    </li> 
-                </ul>
+                        
               
             </section> 
             {% include "footer.html" %}

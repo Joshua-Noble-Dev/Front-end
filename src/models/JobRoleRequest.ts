@@ -1,11 +1,12 @@
 export type JobRoleRequest = {
     roleName: string,
     location: string,
-    capabilityId: number,
-    bandId: number,
+    capabilityID: number,
+    bandID: number,
     closingDate: Date,
     status: string,
     description: string,
     responsibilities: string,
-    jobSpec: string
+    jobSpec: string,
+    positions: number
 }

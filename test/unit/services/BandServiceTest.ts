@@ -5,7 +5,7 @@ import MockAdapter from "axios-mock-adapter";
 import { expect } from "chai";
 
 const bands: Band = {
-    bandId: 1,
+    bandID: 1,
     bandName: "Entry"
 }
 
@@ -22,10 +22,10 @@ describe('BandService', function () {
   
           const results = await getBands();
 
-          console.log(results[0].bandId);
+          console.log(results[0].bandID);
           console.log(results[0].bandName);
   
-          expect(results[0].bandId).to.deep.equal(bands.bandId);
+          expect(results[0].bandID).to.deep.equal(bands.bandID);
           expect(results[0].bandName).to.deep.equal(bands.bandName);
         })
   

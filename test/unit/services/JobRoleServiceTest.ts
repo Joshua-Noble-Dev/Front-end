@@ -11,8 +11,8 @@ const jobRolesResponse: JobRolesResponse = {
     id: 1,
     roleName: "TechLead",
     location: "Belfast",
-    capability: "High",
-    band: "Microsoft",
+    capabilityID: 1,
+    bandID: 2,
     closingDate: testDate,
     status: "open"
 }
@@ -29,8 +29,8 @@ describe('JobRoleService', function () {
         const results = await getJobRoles();
 
         expect(results[0].id).to.deep.equal(jobRolesResponse.id);
-        expect(results[0].band).to.deep.equal(jobRolesResponse.band);
-        expect(results[0].capability).to.deep.equal(jobRolesResponse.capability);
+        expect(results[0].bandID).to.deep.equal(jobRolesResponse.bandID);
+        expect(results[0].capabilityID).to.deep.equal(jobRolesResponse.capabilityID);
         expect(results[0].closingDate).to.deep.equal(jobRolesResponse.closingDate.toISOString());
         expect(results[0].location).to.deep.equal(jobRolesResponse.location);
         expect(results[0].roleName).to.deep.equal(jobRolesResponse.roleName);

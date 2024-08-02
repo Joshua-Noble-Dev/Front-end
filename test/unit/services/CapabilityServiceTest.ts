@@ -5,7 +5,7 @@ import { getCapabilities } from "../../../src/services/CapabilityService";
 import { expect } from "chai";
 
 const capabilities: Capability = {
-    capabilityId: 1,
+    capabilityID: 1,
     capabilityName: "Engineering"
 } 
 
@@ -22,10 +22,10 @@ describe('CapabilityService', function () {
   
           const results = await getCapabilities();
 
-          console.log(results[0].capabilityId);
+          console.log(results[0].capabilityID);
           console.log(results[0].capabilityName);
   
-          expect(results[0].capabilityId).to.deep.equal(capabilities.capabilityId);
+          expect(results[0].capabilityID).to.deep.equal(capabilities.capabilityID);
           expect(results[0].capabilityName).to.deep.equal(capabilities.capabilityName);
         })
   

@@ -1,4 +1,4 @@
 export type Capability = {
-    capabilityId: Number,
+    capabilityID: Number,
     capabilityName: String
 } 
