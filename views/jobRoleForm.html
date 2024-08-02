@@ -39,9 +39,9 @@
                                 </label>
                             </h3> 
 
-                            <select name="capabilityId" id="capabilityId">
+                            <select name="capabilityID" id="capabilityID">
                                 {% for capability in capabilities %}
-                                <option value="{{capability.capabilityId}}">{{capability.capabilityName}}</option>
+                                <option value="{{capability.capabilityID}}">{{capability.capabilityName}}</option>
                                 {% endfor %}
                             </select>
 
@@ -51,9 +51,9 @@
                                 </label>
                             </h3> 
 
-                            <select name="bandId" id="bandId">
+                            <select name="bandID" id="bandID">
                                 {% for band in bands %}
-                                <option value="{{band.bandId}}">{{band.bandName}}</option>
+                                <option value="{{band.bandID}}">{{band.bandName}}</option>
                                 {% endfor %}
                             </select>
 
@@ -84,6 +84,13 @@
                                 </label>
                             </h3> 
                             <input id="jobSpec" name="jobSpec" value="{{jobSpec}}" type="text">
+
+                            <h3 style="font-size:235%;">
+                                <label for="name">
+                                    Positions:
+                                </label>
+                            </h3> 
+                            <input id="positions" name="positions" value="{{positions}}" type="text">
 
                             <button id="submit">Submit</button>
 

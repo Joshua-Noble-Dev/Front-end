@@ -18,7 +18,7 @@ export const getJobRoles = async (): Promise<JobRolesResponse[]> => {
 
 export const createJobRole = async(jobRole: JobRoleRequest): Promise<Number> => {
     try {
-        const response: AxiosResponse = await axios.post("http://localhost:8080/api/job-role", jobRole);
+        const response: AxiosResponse = await axios.post(URL, jobRole);
 
         return response.data;
         
