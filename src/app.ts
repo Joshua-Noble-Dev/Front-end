@@ -3,8 +3,9 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
-import { getAllJobRoles, getHomePage, getJobRoleForm, postJobRoleForm } from "./controllers/RoleController";
+import { getAllJobRoles, getHomePage, getSingleJobRole, getJobRoleForm, postJobRoleForm } from "./controllers/RoleController";
 import { dateFilter } from "./filter/DateFilter";
+import  AuthRoutes from "./Routes/AuthRoutes";
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(session({ secret: 'SUPER_SECRET', cookie: { maxAge: 28800000 }}));
 
+app.use(AuthRoutes);
+
 declare module "express-session" {
   interface SessionData {
     token: string;
@@ -36,7 +39,8 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
-app.get('/homepage' , getHomePage)
 app.get('/jobRoles', getAllJobRoles);
+app.get('/homepage' , getHomePage);
+app.get('/jobRoles/:id', getSingleJobRole);
 app.get('/jobRoleForm', getJobRoleForm);
 app.post('/jobRoleForm', postJobRoleForm);
