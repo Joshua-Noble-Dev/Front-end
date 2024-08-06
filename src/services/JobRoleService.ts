@@ -17,7 +17,7 @@ export const getJobRoles = async (): Promise<JobRolesResponse[]> => {
     }
 }
 
-export const createJobRole = async(jobRole: JobRoleRequest): Promise<Number> => {
+export const createJobRole = async(jobRole: JobRoleRequest): Promise<number> => {
 
     validateJobRoleRequest(jobRole);
 
@@ -27,8 +27,10 @@ export const createJobRole = async(jobRole: JobRoleRequest): Promise<Number> => 
         return response.data;
         
     } catch (e) {
-        console.log(e);
-        throw new Error(e.response.data);
+        if(e.response.status == 500) {
+            throw new Error("Could not create job role");
+        }
+        throw new Error("Invalid data");
     }
 }
 

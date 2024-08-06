@@ -1,12 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import { Band } from "../models/Band";
+import { requestInstanceBand } from "../models";
 
-export const bandURL = "http://localhost:8080/api/bands";
+axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
+
+export const URL: string = "/api/bands/";
 
 export const getBands = async(): Promise<Band[]> => {
 
     try {
-        const response: AxiosResponse = await axios.get(bandURL);
+        const response: AxiosResponse = await requestInstanceBand.get(URL);
         
         return response.data;
     } catch (e) {

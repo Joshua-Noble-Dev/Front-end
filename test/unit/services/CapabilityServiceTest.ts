@@ -1,15 +1,15 @@
-import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { Capability } from "../../../src/models/Capability";
-import { getCapabilities, baseURL } from "../../../src/services/CapabilityService";
+import { getCapabilities, URL } from "../../../src/services/CapabilityService";
 import { expect } from "chai";
+import { requestInstanceCap } from "../../../src/models";
 
 const capabilities: Capability = {
     capabilityID: 1,
     capabilityName: "Engineering"
-} 
+};
 
-const mock = new MockAdapter(axios);
+const mock = new MockAdapter(requestInstanceCap);
 
 describe('CapabilityService', function () {
 
@@ -18,7 +18,7 @@ describe('CapabilityService', function () {
 
           const data = [capabilities];
   
-          mock.onGet(baseURL).reply(200, data);
+          mock.onGet(URL).reply(200, data);
   
           const results = await getCapabilities();
 
@@ -31,7 +31,7 @@ describe('CapabilityService', function () {
   
         it('should return Failed to get Bands when error returned from axios', async () => {
     
-            mock.onGet(baseURL).reply(500);
+            mock.onGet(URL).reply(500);
 
             try {
                 await getCapabilities();

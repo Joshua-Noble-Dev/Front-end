@@ -1,11 +1,12 @@
 import * as JobRoleService from "../../../src/services/JobRoleService";
+import * as BandService from "../../../src/services/BandService";
+import * as CapabilityService from "../../../src/services/CapabilityService";
 import { expect } from 'chai';
 import { JobRolesResponse } from "../../../src/models/JobRolesResponse";
 import sinon from 'sinon';
 import * as RoleController from "../../../src/controllers/RoleController";
-import { getBands } from "../../../src/services/BandService";
-import { getCapabilities } from "../../../src/services/CapabilityService";
-
+import { Band } from "../../../src/models/Band";
+import { Capability } from "../../../src/models/Capability";
 
 const testDate = new Date(1721718000000);
 
@@ -22,7 +23,17 @@ const jobRolesResponse: JobRolesResponse = {
   jobSpec: "jobSpecLink"
 }
 
-describe('RoleContoller', function () {
+const bands: Band = {
+  bandID: 1,
+  bandName: "Entry"
+}
+
+const capabilities: Capability = {
+  capabilityID: 1,
+  capabilityName: "Engineering"
+} 
+
+describe('RoleController', function () {
   afterEach(() => {
     sinon.restore();
   });
@@ -141,17 +152,20 @@ describe('RoleContoller', function () {
 
     it('should render jobRole form', async () => {
 
+      const bandList = [bands];
+      const stubBand = sinon.stub(BandService, 'getBands').resolves(bandList);
+
+      const capabilityList = [capabilities];
+      const stubCap = sinon.stub(CapabilityService, 'getCapabilities').resolves(capabilityList);
+
       const req = { };
       const res = { render: sinon.spy() };
 
       await RoleController.getJobRoleForm(req as any, res as any); // eslint-disable-line  @typescript-eslint/no-explicit-any
 
       expect(res.render.calledOnce).to.be.true;
-      expect(res.render.calledWith('jobRoleForm.html', {bands: await getBands(), capabilities: await getCapabilities()})).to.be.true;
+      expect(res.render.calledWith('jobRoleForm.html', {bands: bandList, capabilities: capabilityList})).to.be.true;
 
     });
-
   });
-
-
 });
