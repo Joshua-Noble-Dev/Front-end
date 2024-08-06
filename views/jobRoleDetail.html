@@ -38,6 +38,11 @@
                     <p id="ban"><b>Band: </b>{{ jobRole.bandName }}</p>
                     <p id="closingDate"> <b>Closing Date:</b> {{ jobRole.closingDate | date }}</p>
                     <p id="jobSpec"><a title="Sharepoint link to Job Role Spec" href="{{ jobRole.jobSpec }}" target="_blank">Click here to see job specification</a></p>
+                    <p><b>Status: </b><span class="role-status">{{ jobRole.status }}</span></p>
+                        {% if jobRole.positions > 0 and jobRole.status == "open" %}
+                            <a href="apply.html" class="apply-button">Apply Now</a>
+                        {% endif %}
+
                     
                 </li>
             </ul>
