@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="./css/style.css">
         <link rel="stylesheet" type="text/css" href="./css/jobRolesListStyle.css">
+        <link rel="stylesheet" type="text/css" href="./css/addNewRole.css">
         <title>Job Roles</title>
         <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
         <meta charset="utf-8">
@@ -15,9 +16,11 @@
 
     <body>
         {% include "header.html" %}
-
         <section class="job-roles"> 
             <h2 id="availableJobRoles" style="text-align: center; font-size: 325%;">Available Job Roles</h2>
+            <div class="add-button">
+                <a title="Button to add a new role" href="/jobRoleForm" id="addJobRole">Add Role</a>
+            </div>
             <ul> 
                 {% for jobRole in roles %}
                 <li> 
@@ -27,8 +30,12 @@
                     <p id="jobBandCapability_{{ loop.index }}"><b>Band: </b>{{ jobRole.bandName }}</p> 
                     <p id="jobClosingDate_{{ loop.index }}"><b>Closing Date: </b>{{ jobRole.closingDate | date }}</p> 
                     <p id="jobStatus_{{ loop.index }}"><b>Status: </b>{{ jobRole.status }}</p> 
+                    {% if jobRole.positions > 0 and jobRole.status == "open" %}
+                        <button class="apply-button">Apply Now</button>
+                        {% endif %} 
                 </li> 
                 {% endfor %} 
+
             </ul>
         </section> 
         {% include "footer.html" %}

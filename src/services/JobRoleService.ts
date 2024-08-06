@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { JobRolesResponse } from "../models/JobRolesResponse";
 import { JobRoleRequest } from "../models/JobRoleRequest";
+import { validateJobRoleRequest } from "../validators/JobRoleValidator";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
 
@@ -17,6 +18,9 @@ export const getJobRoles = async (): Promise<JobRolesResponse[]> => {
 }
 
 export const createJobRole = async(jobRole: JobRoleRequest): Promise<Number> => {
+
+    validateJobRoleRequest(jobRole);
+
     try {
         const response: AxiosResponse = await axios.post(URL, jobRole);
 

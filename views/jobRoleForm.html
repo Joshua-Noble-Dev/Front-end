@@ -1,103 +1,142 @@
 <!DOCTYPE html>
 <html lang = "en">
-
+ 
     <head>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <title>Create a Role</title>
+        <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../../css/newRole.css">
+        <title>Add Role</title>
         <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.cdnfonts.com/css/galano-grotesque-alt" rel="stylesheet">
         <script src="https://kit.fontawesome.com/2ea65b5d39.js" crossorigin="anonymous"></script>
-    </head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </head>
+ 
+        <body>
+            {% include "header.html" %}
+ 
+            <h2 style = "text-align: center; padding: 10px;">Add new role</h2>
+ 
+                <div class="formbold-main-wrapper">
+                    <div class="formbold-form-wrapper">
 
-    <body>
-        {% include "header.html" %}
-            <section class="job-roles"> 
-                <h2 style="text-align: center; font-size:325%;">Create a Role</h2>
+                        {% if errormessage %} 
+                        <div class="govuk-error-message" id="create-jobRole-error">{{ errormessage }}</div> 
+                        {% endif %}
+
+                    <form action="/jobRoleForm" method="POST">
+                        <div class="formbold-input-wrapp formbold-mb-3">
+                        <label for="roleName" class="formbold-form-label"> Job Role Name </label>
+                        <input
+                            type="text"
+                            name="roleName"
+                            id="roleName"
+                            value="{{roleName}}" 
+                            placeholder="Name"
+                            class="formbold-form-input"/>
                 
-                        <form class="form" action="/jobRoleForm" method="post">
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Role Name:
-                                </label>
-                            </h3> 
-                            <input id="name" name="name" value="{{roleName}}" type="text">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Location:
-                                </label>
-                            </h3> 
-                            <input id="location" name="location" value="{{location}}" type="text">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Capability:
-                                </label>
-                            </h3> 
-
-                            <select name="capabilityID" id="capabilityID">
+                            
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="location" class="formbold-form-label"> Job Location </label>
+                        <input
+                            type="text"
+                            name="location"
+                            id="location"
+                            value="{{location}}"
+                            placeholder="Belfast"
+                            class="formbold-form-input"
+                        />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="closingDate" class="formbold-form-label"> Closing Date </label>
+                        <input type="date" name="closingDate" id="closingDate" value="{{closingDate}}" class="formbold-form-input" />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label class="formbold-form-label">Band</label>
+                
+                        <select class="formbold-form-input" name="bandID" id="bandID">
+                            {% for band in bands %}
+                                <option value="{{band.bandID}}">{{band.bandName}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+ 
+                        <div class="formbold-mb-3">
+                            <label class="formbold-form-label">Capability</label>
+                    
+                            <select class="formbold-form-input" name="capabilityID" id="capabilityID">
                                 {% for capability in capabilities %}
                                 <option value="{{capability.capabilityID}}">{{capability.capabilityName}}</option>
                                 {% endfor %}
                             </select>
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Band:
-                                </label>
-                            </h3> 
-
-                            <select name="bandID" id="bandID">
-                                {% for band in bands %}
-                                <option value="{{band.bandID}}">{{band.bandName}}</option>
-                                {% endfor %}
-                            </select>
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Closing Date:
-                                </label>
-                            </h3> 
-                            <input id="closingDate" name="closingDate" value="{{closingDate}}" type="date">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Description:
-                                </label>
-                            </h3> 
-                            <input id="description" name="description" value="{{description}}" type="text">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Responsibilities:
-                                </label>
-                            </h3> 
-                            <input id="responsibilities" name="responsibilities" value="{{responsibilities}}" type="text">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Job Spec Link:
-                                </label>
-                            </h3> 
-                            <input id="jobSpec" name="jobSpec" value="{{jobSpec}}" type="text">
-
-                            <h3 style="font-size:235%;">
-                                <label for="name">
-                                    Positions:
-                                </label>
-                            </h3> 
-                            <input id="positions" name="positions" value="{{positions}}" type="text">
-
-                            <button id="submit">Submit</button>
-
-                        </form>
-                        
-              
-            </section> 
-            {% include "footer.html" %}
-    </body>
-</html>
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="jobSpec" class="formbold-form-label"> Job Specification Link</label>
+                        <input
+                            type="text"
+                            name="jobSpec"
+                            id="jobSpec"
+                            value="{{jobSpec}}"
+                            placeholder="Sharepoint link"
+                            class="formbold-form-input"
+                        />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="responsibilities" class="formbold-form-label"> Responsibilities </label>
+                
+                        <input
+                            type="text"
+                            name="responsibilities"
+                            id="responsibilities"
+                            value="{{responsibilities}}"
+                            placeholder="Coding, software engineering"
+                            class="formbold-form-input formbold-mb-3"
+                        />
+                        </div>
+ 
+ 
+                        <div class="formbold-mb-3">
+                            <label for="positions" class="formbold-form-label"> Number of open positions </label>
+                    
+                            <input
+                            type="text"
+                            name="positions"
+                            id="positions"
+                            value="{{positions}}"
+                            placeholder="1"
+                            class="formbold-form-input formbold-mb-3"
+                            />
+                        </div>
+ 
+                        <div class="formbold-mb-5">
+                            <label for="description" class="formbold-form-label"> Job Description </label>
+                            <textarea
+                            rows="6"
+                            name="description"
+                            id="description"
+                            value="{{description}}"
+                            placeholder="Description"
+                            class="formbold-form-input"
+                            ></textarea>
+                        </div>
+                
+                    
+                
+                        <button class="formbold-btn">Submit</button>
+                    </form>
+                    </div>
+                </div>
+                 {% include "footer.html" %}
+ 
+                </body>
+            </html>

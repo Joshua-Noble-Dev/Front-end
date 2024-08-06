@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Band } from "../../../src/models/Band";
-import { baseURL, getBands } from "../../../src/services/BandService";
+import { bandURL, getBands } from "../../../src/services/BandService";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from "chai";
 
@@ -18,7 +18,7 @@ describe('BandService', function () {
       it('should return bands from response', async () => {
         const data = [bands];
 
-        mock.onGet(baseURL).reply(200, data);
+        mock.onGet(bandURL).reply(200, data)
 
         const results = await getBands();
 
@@ -28,7 +28,7 @@ describe('BandService', function () {
       })
         it('should return Failed to get Bands when error returned from axios', async () => {
     
-            mock.onGet(baseURL).reply(500);
+            mock.onGet(bandURL).reply(500);
 
             try {
                 await getBands();
