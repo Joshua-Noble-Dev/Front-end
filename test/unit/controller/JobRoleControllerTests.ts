@@ -166,6 +166,9 @@ describe('RoleController', function () {
       expect(res.render.calledOnce).to.be.true;
       expect(res.render.calledWith('jobRoleForm.html', {bands: bandList, capabilities: capabilityList})).to.be.true;
 
+      stubBand.restore;
+      stubCap.restore;
+
     });
   });
 });
