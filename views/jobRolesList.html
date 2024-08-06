@@ -15,27 +15,23 @@
 
     <body>
         {% include "header.html" %}
-            <section class="job-roles"> 
-                <h2 style="text-align: center; font-size:325%;">Available Job Roles</h2>
-                
-                <ul> 
-                    {% for jobRole in roles %}
-                    <li> 
-                        <h3 style="font-size:235%;">{{ jobRole.roleName }}</h3> 
-                        <h4 style="font-family:''Galano Grotesque', sans-serif';"><i class="fa fa-map-marker " aria-hidden="true"></i> {{ jobRole.location }}</h4>
-                        <p><b>Capability: </b>{{ jobRole.capabilityName }}</p> 
-                        <p><b>Band: </b>{{ jobRole.bandName }}</p> 
-                        <p><b>Closing Date: </b>{{ jobRole.closingDate | date }}</p> 
-                        <p><b>Closing Date: </b>{{ jobRole.closingDate | date }}</p>
-                        <p><b>Status: </b><span class="role-status">{{ jobRole.status }}</span></p>
-                        {% if jobRole.positions > 0 and jobRole.status == "open" %}
-                            <a href="apply.html" class="apply-button">Apply Now</a>
-                        {% endif %}
-                    </li> 
-                    {% endfor %} 
-                </ul>
-              
-            </section> 
-            {% include "footer.html" %}
+
+        <section class="job-roles"> 
+            <h2 id="availableJobRoles" style="text-align: center; font-size: 325%;">Available Job Roles</h2>
+            <ul> 
+                {% for jobRole in roles %}
+                <li> 
+                    <h3 style="font-size:235%;" id="jobRoleName_{{ loop.index }}"><a href="/jobRoles/{{ jobRole.id }}" style="color:#252d4f;" id="jobRoleNameLink_{{ loop.index }}">{{ jobRole.roleName }}</a></h3> 
+                    <h4 style="font-family:'Galano Grotesque', sans-serif;" id="locationMapMarker_{{ loop.index }}"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ jobRole.location }}</h4>
+                    <p id="jobCapability_{{ loop.index }}"><b>Capability: </b>{{ jobRole.capabilityName }}</p> 
+                    <p id="jobBandCapability_{{ loop.index }}"><b>Band: </b>{{ jobRole.bandName }}</p> 
+                    <p id="jobClosingDate_{{ loop.index }}"><b>Closing Date: </b>{{ jobRole.closingDate | date }}</p> 
+                    <p id="jobStatus_{{ loop.index }}"><b>Status: </b>{{ jobRole.status }}</p> 
+                </li> 
+                {% endfor %} 
+            </ul>
+        </section> 
+        {% include "footer.html" %}
+
     </body>
 </html>
