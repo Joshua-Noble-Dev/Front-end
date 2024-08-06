@@ -164,7 +164,7 @@ describe('RoleController', function () {
       await RoleController.getJobRoleForm(req as any, res as any); // eslint-disable-line  @typescript-eslint/no-explicit-any
 
       expect(res.render.calledOnce).to.be.true;
-      expect(res.render.calledWith('jobRoleForm.html', {bands: bandList, capabilities: capabilityList})).to.be.true;
+      expect(res.render.calledWith('jobRoleForm.html', { baseURL: process.env.AWS_URL || 'http://localhost:3000', bands: bandList, capabilities: capabilityList })).to.be.true;
 
       stubBand.restore;
       stubCap.restore;
