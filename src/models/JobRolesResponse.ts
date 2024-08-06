@@ -2,8 +2,9 @@ export type JobRolesResponse = {
     id: number,
     roleName: string,
     location: string,
-    capability: string,
-    band: string,
+    capabilityName: string,
+    bandName: string,
     closingDate: Date,
-    status: string
+    status: string,
+    positions: number
 }
