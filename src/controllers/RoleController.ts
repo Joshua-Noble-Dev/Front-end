@@ -1,9 +1,9 @@
 import express from "express";
-import { getJobRoleById, createJobRole, getJobRoles } from "../services/JobRoleService"
-
-const baseURL = process.env.AWS_URL || 'http://localhost:3000';
+import { getJobRoleById, createJobRole, getJobRoles } from "../services/JobRoleService";
 import { getBands } from "../services/BandService";
 import { getCapabilities } from "../services/CapabilityService";
+
+const baseURL = process.env.AWS_URL || 'http://localhost:3000';
 
 export const getHomePage = async (req: express.Request, res: express.Response): Promise<void> => {
     res.render('homepage.html', {baseURL} );
@@ -28,7 +28,7 @@ export const getSingleJobRole = async (req: express.Request, res: express.Respon
 }
 
 export const getJobRoleForm = async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('jobRoleForm.html', { bands: await getBands(), capabilities: await getCapabilities() });
+    res.render('jobRoleForm.html', { baseURL, bands: await getBands(), capabilities: await getCapabilities() });
 }
 
 export const postJobRoleForm = async (req: express.Request, res: express.Response): Promise<void> => {
