@@ -11,3 +11,7 @@ export const postCV = async (req: express.Request, res: express.Response): Promi
         res.render('homepage.html', { ...req.body, errormessage: res.locals.errormessage });
     }
 }; 
+
+export const getApplyPage = async (req: express.Request, res: express.Response): Promise<void> => {
+    res.render('apply.html', {baseURL} );
+}
