@@ -63,6 +63,7 @@
                         <label class="formbold-form-label" for="bandID">Band</label>
                 
                         <select class="formbold-form-input" name="bandID" id="bandID">
+                            <option value="" disabled selected>Select a band</option>
                             {% for band in bands %}
                                 <option value="{{band.bandID}}">{{band.bandName}}</option>
                             {% endfor %}
@@ -73,6 +74,7 @@
                             <label class="formbold-form-label" for="capabilityID">Capability</label>
                     
                             <select class="formbold-form-input" name="capabilityID" id="capabilityID">
+                                <option value="" disabled selected>Select a capability</option>
                                 {% for capability in capabilities %}
                                 <option value="{{capability.capabilityID}}">{{capability.capabilityName}}</option>
                                 {% endfor %}
@@ -99,14 +101,14 @@
                             name="responsibilities"
                             id="responsibilities"
                             value="{{responsibilities}}"
-                            placeholder="Coding, software engineering"
+                            placeholder="Coding, Software engineering etc"
                             class="formbold-form-input formbold-mb-3"
                         />
                         </div>
  
  
                         <div class="formbold-mb-3">
-                            <label for="positions" class="formbold-form-label"> Number of open positions </label>
+                            <label for="positions" class="formbold-form-label"> Number of Open Positions </label>
                     
                             <input
                             type="text"
