@@ -37,6 +37,6 @@ export const postJobRoleForm = async (req: express.Request, res: express.Respons
         res.redirect('/jobRoles/' + id);
     } catch (e) {
         res.locals.errormessage = e.message;
-        res.render('jobRoleForm.html', req.body) ;
+        res.render('jobRoleForm.html', { baseURL, bands: await getBands(), capabilities: await getCapabilities() }) ;
     }
 }
