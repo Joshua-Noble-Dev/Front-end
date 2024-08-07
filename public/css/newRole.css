@@ -79,7 +79,7 @@ body {
     background: #ffffff;
     font-weight: 500;
     font-size: 16px;
-    color: #536387;
+    color: #252d4f;
     outline: none;
     resize: none;
 }
@@ -90,7 +90,7 @@ select.formbold-form-input,
 .formbold-form-input[type='date']::-webkit-datetime-edit-month-field,
 .formbold-form-input[type='date']::-webkit-datetime-edit-day-field,
 .formbold-form-input[type='date']::-webkit-datetime-edit-year-field {
-    color: rgba(83, 99, 135, 0.5);
+    color: rgba(37, 45, 79, 0.7);
 }
 
 .formbold-form-input:focus {
