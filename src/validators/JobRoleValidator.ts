@@ -5,13 +5,6 @@ const currentDate = new Date()
 export const validateJobRoleRequest = function (jobRoleRequest: JobRoleRequest): void {
 
     const date = new Date(jobRoleRequest.closingDate);
-
-    if (jobRoleRequest.bandID == null || jobRoleRequest.capabilityID == null ||
-        jobRoleRequest.closingDate == null ) {
-
-            throw new Error("Please fill in all fields");
-
-    }
     
     if (jobRoleRequest.roleName.length > 100 || jobRoleRequest.roleName.length == 0) {
         throw new Error("Invalid Role Name");
