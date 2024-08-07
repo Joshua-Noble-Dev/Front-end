@@ -27,15 +27,6 @@ body {
     z-index: 999;
 }
 
-#supportCheckbox:checked~div span {
-    opacity: 1;
-}
-
-#supportCheckbox:checked~div {
-    background: #6a64f1;
-    border-color: #6a64f1;
-}
-
 .formbold-main-wrapper {
     display: flex;
     align-items: center;
@@ -84,6 +75,20 @@ body {
     resize: none;
 }
 
+select.formbold-form-input {
+    color: #252d4f;
+    background: #ffffff;
+}
+
+select.formbold-form-input option {
+    color: #252d4f; 
+}
+
+select.formbold-form-input:focus,
+select.formbold-form-input option:checked {
+    color: #252d4f; 
+}
+
 .formbold-form-input::placeholder,
 select.formbold-form-input,
 .formbold-form-input[type='date']::-webkit-datetime-edit-text,
@@ -94,7 +99,7 @@ select.formbold-form-input,
 }
 
 .formbold-form-input:focus {
-    border-color: #6a64f1;
+    border-color: #252d4f;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -104,73 +109,6 @@ select.formbold-form-input,
     line-height: 24px;
     display: block;
     margin-bottom: 10px;
-}
-
-.formbold-checkbox-label {
-    display: flex;
-    cursor: pointer;
-    user-select: none;
-    font-size: 16px;
-    line-height: 24px;
-    color: #536387;
-}
-
-.formbold-checkbox-label a {
-    margin-left: 5px;
-    color: #252d4f;
-}
-
-.formbold-input-checkbox {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-.formbold-checkbox-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    margin-right: 16px;
-    margin-top: 2px;
-    border: 0.7px solid #dde3ec;
-    border-radius: 3px;
-}
-
-.formbold-form-file {
-    padding: 12px;
-    font-size: 14px;
-    line-height: 24px;
-    color: rgba(83, 99, 135, 0.5);
-}
-
-.formbold-form-file::-webkit-file-upload-button {
-    display: none;
-}
-
-.formbold-form-file:before {
-    content: 'Upload';
-    display: inline-block;
-    background: #EEEEEE;
-    border: 0.5px solid #E7E7E7;
-    border-radius: 3px;
-    padding: 3px 12px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    color: #637381;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    margin-right: 10px;
 }
 
 .formbold-btn {
@@ -192,3 +130,4 @@ select.formbold-form-input,
 .formbold-w-45 {
     width: 45%;
 }
+
