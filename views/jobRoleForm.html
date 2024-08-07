@@ -84,26 +84,28 @@
                         <div class="formbold-mb-3">
                         <label for="jobSpec" class="formbold-form-label"> Job Specification Link</label>
                         <input
-                            type="text"
+                            type="url"
                             name="jobSpec"
                             id="jobSpec"
                             value="{{jobSpec}}"
-                            placeholder="Sharepoint link"
+                            placeholder="https://sharepoint.com"
+                            pattern="https://.*"
+                            size="30" 
                             class="formbold-form-input"
                         />
                         </div>
                 
                         <div class="formbold-mb-3">
                         <label for="responsibilities" class="formbold-form-label"> Responsibilities </label>
-                
-                        <input
-                            type="text"
+                        
+                        <textarea
+                            rows="6"
                             name="responsibilities"
                             id="responsibilities"
                             value="{{responsibilities}}"
                             placeholder="Coding, Software engineering etc"
-                            class="formbold-form-input formbold-mb-3"
-                        />
+                            class="formbold-form-input"
+                            ></textarea>
                         </div>
  
  
