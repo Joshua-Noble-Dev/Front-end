@@ -132,6 +132,12 @@ describe('RoleController', function () {
 
       const errorMessage: string = 'Error message';
 
+      const bandList = [bands];
+      const stubBand = sinon.stub(BandService, 'getBands').resolves(bandList);
+
+      const capabilityList = [capabilities];
+      const stubCap = sinon.stub(CapabilityService, 'getCapabilities').resolves(capabilityList);
+
       sinon.stub(JobRoleService, 'createJobRole').rejects(new Error(errorMessage));
 
       const req = {};
@@ -143,6 +149,9 @@ describe('RoleController', function () {
       expect(res.render.calledOnce).to.be.true;
       expect(res.render.calledWith('jobRoleForm.html')).to.be.true;
       expect(res.locals.errormessage).to.equal(errorMessage);
+
+      stubBand.restore;
+      stubCap.restore;
 
     });
 
