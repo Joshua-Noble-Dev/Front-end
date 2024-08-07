@@ -63,6 +63,7 @@
                         <label class="formbold-form-label" for="bandID">Band</label>
                 
                         <select class="formbold-form-input" name="bandID" id="bandID">
+                                <option value=null>Select</option>
                             {% for band in bands %}
                                 <option value="{{band.bandID}}">{{band.bandName}}</option>
                             {% endfor %}
@@ -73,6 +74,7 @@
                             <label class="formbold-form-label" for="capabilityID">Capability</label>
                     
                             <select class="formbold-form-input" name="capabilityID" id="capabilityID">
+                                <option value=null>Select</option>
                                 {% for capability in capabilities %}
                                 <option value="{{capability.capabilityID}}">{{capability.capabilityName}}</option>
                                 {% endfor %}
