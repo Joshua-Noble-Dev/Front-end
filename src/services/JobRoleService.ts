@@ -32,12 +32,19 @@ export const getJobRoleById = async (id: string): Promise<JobRolesResponse> => {
 }
 
 export const applyForJob = async (roleId: string, userId: string, cvFile: File): Promise<File> => {         
-    const formData = new FormData();         
+    const formData = new FormData();  
+    formData.append('roleId', roleId);         
     formData.append('userId', userId);         
     formData.append('cv', cvFile);         
-    const response = await axios.post(`http://localhost:8080/job-roles/${roleId}/apply`, formData, {             
-    headers: {                 
-    'Content-Type': 'multipart/form-data' 
-    } 
-    }); 
-    return response.data; }
+    console.log(formData)
+    try {
+        const response = await axios.post(`http://localhost:8080/job-roles/${roleId}/apply`, formData, {             
+            headers: {                 
+            'Content-Type': 'multipart/form-data' 
+            } 
+            }); 
+            return response.data; 
+    } catch (error) {
+        console.log(error)
+        throw error
+    }}

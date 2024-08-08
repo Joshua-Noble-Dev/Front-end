@@ -3,7 +3,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
-import { getAllJobRoles, getHomePage, getSingleJobRole , getApplyPage} from "./controllers/RoleController";
+import { getAllJobRoles, getHomePage, getSingleJobRole , getApplyPage, postCV} from "./controllers/RoleController";
 import { dateFilter } from "./filter/DateFilter";
 import  AuthRoutes from "./Routes/AuthRoutes";
 
@@ -43,3 +43,4 @@ app.get('/jobRoles', getAllJobRoles);
 app.get('/homepage' , getHomePage);
 app.get('/jobRoles/:id', getSingleJobRole);
 app.get('/jobRoles/:id/apply', getApplyPage);
+app.post('/jobRoles/:id/apply', postCV)
