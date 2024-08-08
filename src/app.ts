@@ -42,4 +42,4 @@ app.listen(3000, () => {
 app.get('/jobRoles', getAllJobRoles);
 app.get('/homepage' , getHomePage);
 app.get('/jobRoles/:id', getSingleJobRole);
-app.get('/job-roles/${roleId}/apply', getApplyPage);
+app.get('/jobRoles/:id/apply', getApplyPage);

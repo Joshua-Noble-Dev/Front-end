@@ -36,6 +36,7 @@ export const postCV = async (req: express.Request, res: express.Response): Promi
 }; 
 
 export const getApplyPage = async (req: express.Request, res: express.Response): Promise<void> => {
-    res.render('apply.html', { baseURL, jobRole: await getJobRoleById(req.params.id) });
+    // res.render('/apply', { baseURL, jobRole: await getJobRoleById(req.params.id) });
+    res.render(`jobRoles/${req.params.id}/apply`, { baseURL, jobRole: await getJobRoleById(req.params.id) });
 
 }
