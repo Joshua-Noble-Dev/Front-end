@@ -28,7 +28,7 @@
                         <div class="govuk-error-message" id="create-jobRole-error">{{ errormessage }}</div> 
                         {% endif %}
 
-                    <form action="/jobRoleForm" method="POST">
+                    <form id="jobRoleForm" action="/jobRoleForm" method="POST">
                         <div class="formbold-input-wrapp formbold-mb-3">
                         <label for="roleName" class="formbold-form-label"> Job Role Name </label>
                         <input
@@ -63,9 +63,9 @@
                         <label class="formbold-form-label" for="bandID">Band</label>
                 
                         <select class="formbold-form-input" name="bandID" id="bandID">
-                            <option value="" disabled selected>Select a band</option>
+                            <option value="" disabled selected>{{band}}Select a band</option>
                             {% for band in bands %}
-                                <option value="{{band.bandID}}">{{band.bandName}}</option>
+                            <option value="{{band.bandID}}">{{band.bandName}}</option>
                             {% endfor %}
                         </select>
                         </div>
@@ -100,12 +100,13 @@
                         
                         <textarea
                             rows="6"
+                            form="jobRoleForm"
                             name="responsibilities"
                             id="responsibilities"
                             value="{{responsibilities}}"
-                            placeholder="Coding, Software engineering etc"
-                            class="formbold-form-input"
-                            ></textarea>
+                            placeholder="Coding, Software engineering, etc."
+                            class="formbold-form-input formbold-mb-3"
+                            >{{responsibilities}}</textarea>
                         </div>
  
  
@@ -118,7 +119,7 @@
                             id="positions"
                             value="{{positions}}"
                             placeholder="1"
-                            class="formbold-form-input formbold-mb-3"
+                            class="formbold-form-input"
                             />
                         </div>
  
@@ -131,7 +132,7 @@
                             value="{{description}}"
                             placeholder="Description"
                             class="formbold-form-input"
-                            ></textarea>
+                            >{{description}}</textarea>
                         </div>
                 
                     
