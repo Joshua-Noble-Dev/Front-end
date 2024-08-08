@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { JobRolesResponse } from "../models/JobRolesResponse";
 
+
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080';
 
 export const URL: string = "/api/job-roles/";
@@ -29,3 +30,14 @@ export const getJobRoleById = async (id: string): Promise<JobRolesResponse> => {
         throw new Error('Failed to get Job Role');
     }
 }
+
+export const applyForJob = async (roleId: string, userId: string, cvFile: File): Promise<File> => {         
+    const formData = new FormData();         
+    formData.append('userId', userId);         
+    formData.append('cv', cvFile);         
+    const response = await axios.post(`http://localhost:8080/job-roles/${roleId}/apply`, formData, {             
+    headers: {                 
+    'Content-Type': 'multipart/form-data' 
+    } 
+    }); 
+    return response.data; }

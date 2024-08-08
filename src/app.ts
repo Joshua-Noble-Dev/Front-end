@@ -3,10 +3,9 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
-import { getAllJobRoles, getHomePage, getSingleJobRole } from "./controllers/RoleController";
+import { getAllJobRoles, getHomePage, getSingleJobRole , getApplyPage} from "./controllers/RoleController";
 import { dateFilter } from "./filter/DateFilter";
 import  AuthRoutes from "./Routes/AuthRoutes";
-import { getApplyPage } from "./controllers/CVController";
 
 
 const app = express();
@@ -43,4 +42,4 @@ app.listen(3000, () => {
 app.get('/jobRoles', getAllJobRoles);
 app.get('/homepage' , getHomePage);
 app.get('/jobRoles/:id', getSingleJobRole);
-app.get('/apply', getApplyPage);
+app.get('/job-roles/${roleId}/apply', getApplyPage);
