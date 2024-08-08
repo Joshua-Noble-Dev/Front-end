@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang = "en">
+ 
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../../css/newRole.css">
+        <title>Add Role</title>
+        <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.cdnfonts.com/css/galano-grotesque-alt" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/2ea65b5d39.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        </head>
+ 
+        <body>
+            {% include "header.html" %}
+ 
+            <h2 style = "text-align: center; padding: 10px;">Add new role</h2>
+ 
+                <div class="formbold-main-wrapper">
+                    <div class="formbold-form-wrapper">
+
+                        {% if errormessage %} 
+                        <div class="govuk-error-message" id="create-jobRole-error">{{ errormessage }}</div> 
+                        {% endif %}
+
+                    <form id="jobRoleForm" action="/jobRoleForm" method="POST">
+                        <div class="formbold-input-wrapp formbold-mb-3">
+                        <label for="roleName" class="formbold-form-label"> Job Role Name </label>
+                        <input
+                            type="text"
+                            name="roleName"
+                            id="roleName"
+                            value="{{roleName}}" 
+                            placeholder="Name"
+                            class="formbold-form-input"/>
+                
+                            
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="location" class="formbold-form-label"> Job Location </label>
+                        <input
+                            type="text"
+                            name="location"
+                            id="location"
+                            value="{{location}}"
+                            placeholder="Belfast"
+                            class="formbold-form-input"
+                        />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="closingDate" class="formbold-form-label"> Closing Date </label>
+                        <input type="date" name="closingDate" id="closingDate" value="{{closingDate}}" class="formbold-form-input" />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label class="formbold-form-label" for="bandID">Band</label>
+                
+                        <select class="formbold-form-input" name="bandID" id="bandID">
+                            <option value="" disabled selected>Select a band</option>
+                            {% for band in bands %}
+                            <option value="{{band.bandID}}" {% if bandID == band.bandID %} selected {% endif %}>{{band.bandName}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+ 
+                        <div class="formbold-mb-3">
+                            <label class="formbold-form-label" for="capabilityID">Capability</label>
+                    
+                            <select class="formbold-form-input" name="capabilityID" id="capabilityID">
+                                <option value="" disabled selected>Select a capability</option>
+                                {% for capability in capabilities %}
+                                <option value="{{capability.capabilityID}}" {% if capabilityID == capability.capabilityID %} selected {% endif %}>{{capability.capabilityName}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="jobSpec" class="formbold-form-label"> Job Specification Link</label>
+                        <input
+                            type="url"
+                            name="jobSpec"
+                            id="jobSpec"
+                            value="{{jobSpec}}"
+                            placeholder="https://sharepoint.com"
+                            pattern="https://.*"
+                            size="30" 
+                            class="formbold-form-input"
+                        />
+                        </div>
+                
+                        <div class="formbold-mb-3">
+                        <label for="responsibilities" class="formbold-form-label"> Responsibilities </label>
+                        
+                        <textarea
+                            rows="6"
+                            form="jobRoleForm"
+                            name="responsibilities"
+                            id="responsibilities"
+                            value="{{responsibilities}}"
+                            placeholder="Coding, Software engineering, etc."
+                            class="formbold-form-input formbold-mb-3"
+                            >{{responsibilities}}</textarea>
+                        </div>
+ 
+ 
+                        <div class="formbold-mb-3">
+                            <label for="positions" class="formbold-form-label"> Number of Open Positions </label>
+                    
+                            <input
+                            type="text"
+                            name="positions"
+                            id="positions"
+                            value="{{positions}}"
+                            placeholder="1"
+                            class="formbold-form-input"
+                            />
+                        </div>
+ 
+                        <div class="formbold-mb-5">
+                            <label for="description" class="formbold-form-label"> Job Description </label>
+                            <textarea
+                            rows="6"
+                            name="description"
+                            id="description"
+                            value="{{description}}"
+                            placeholder="Description"
+                            class="formbold-form-input"
+                            >{{description}}</textarea>
+                        </div>
+                
+                    
+                
+                        <button class="formbold-btn">Submit</button>
+                    </form>
+                    </div>
+                </div>
+                 {% include "footer.html" %}
+ 
+                </body>
+            </html>

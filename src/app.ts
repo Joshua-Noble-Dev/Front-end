@@ -3,7 +3,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
 
-import { getAllJobRoles, getHomePage, getSingleJobRole } from "./controllers/RoleController";
+import { getAllJobRoles, getHomePage, getSingleJobRole, getJobRoleForm, postJobRoleForm } from "./controllers/RoleController";
 import { dateFilter } from "./filter/DateFilter";
 import  AuthRoutes from "./Routes/AuthRoutes";
 import { UserRole } from "./models/JwtToken";
@@ -53,3 +53,5 @@ app.listen(3000, () => {
 app.get('/jobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
 app.get('/homepage' , allowRoles([UserRole.Admin, UserRole.User]), getHomePage);
 app.get('/jobRoles/:id', allowRoles([UserRole.Admin, UserRole.User]), getSingleJobRole);
+app.get('/jobRoleForm', allowRoles([UserRole.Admin]), getJobRoleForm);
+app.post('/jobRoleForm', allowRoles([UserRole.Admin]), postJobRoleForm);

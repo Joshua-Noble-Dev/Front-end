@@ -2,10 +2,10 @@ import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
 import { JobRolesResponse } from "../../../src/models/JobRolesResponse";
-import { getJobRoleById, getJobRoles, URL } from "../../../src/services/JobRoleService";
+import { createJobRole, getJobRoleById, getJobRoles, URL } from "../../../src/services/JobRoleService";
+import { JobRoleRequest } from "../../../src/models/JobRoleRequest";
 
-
-const testDate = new Date(1721718000000);
+const testDate = new Date();
 
 const jobRolesResponse: JobRolesResponse = {
     id: 1,
@@ -20,6 +20,18 @@ const jobRolesResponse: JobRolesResponse = {
     jobSpec: "jobSpecLink"
 }
 
+const jobRoleRequest: JobRoleRequest = {
+  roleName: "roleName",
+  location: "location",
+  capabilityID: 1,
+  bandID: 1,
+  closingDate: testDate,
+  description: "description",
+  responsibilities: "responsibilities",
+  jobSpec: "jobSpec",
+  positions: 2
+}
+
 const mock = new MockAdapter(axios);
 const token = "sample-token";
 
@@ -29,6 +41,7 @@ describe('JobRoleService', function () {
         const data = [jobRolesResponse];
         
 
+        console.log(URL)
         mock.onGet(URL).reply(200, data);
 
         const results = await getJobRoles(token);
@@ -96,6 +109,44 @@ describe('JobRoleService', function () {
         await getJobRoleById("1", "token");
       } catch (e) {
         expect(e.message).to.equal('Job Role does not exist');
+        return;
+      }
+
+      })
+
+    })
+
+    describe('createJobRole', function () {
+
+      it('should return an id when axios returns a id', async () => {
+
+        mock.onPost(URL).reply(201,1);
+
+        const result = await createJobRole(jobRoleRequest, "token");
+
+        expect(result).to.deep.equal(1);
+
+      })
+
+      it('should return Could not create job role error when axios returns 500 error', async () => {
+        mock.onPost(URL).reply(500);
+
+      try {
+        await createJobRole(jobRoleRequest, "token");
+      } catch (e) {
+        expect(e.message).to.equal('Could not create job role');
+        return;
+      }
+
+      })
+
+      it('should throw relevant error when 400 error returned from axios', async () => {
+        mock.onPost(URL).reply(400);
+
+      try {
+        await createJobRole(jobRoleRequest, "token");
+      } catch (e) {
+        expect(e.message).to.equal('Invalid data');
         return;
       }
 
