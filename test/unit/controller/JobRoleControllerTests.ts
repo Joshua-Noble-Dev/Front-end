@@ -141,7 +141,9 @@ describe('RoleController', function () {
 
       sinon.stub(JobRoleService, 'createJobRole').resolves(id);
 
-      const req = { body: id };
+      const mockValidToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4ifQ.sZp-OKP7_NAf1j9FgHt9BFROv0FAKyjTi01_hbXPzWI';
+
+      const req = { body: id, session: { token: mockValidToken }, headers: { authorization: `Bearer ${mockValidToken}` } };
       const res = { redirect: sinon.spy() };
 
       await RoleController.postJobRoleForm(req as any, res as any); // eslint-disable-line  @typescript-eslint/no-explicit-any
@@ -163,7 +165,10 @@ describe('RoleController', function () {
 
       sinon.stub(JobRoleService, 'createJobRole').rejects(new Error(errorMessage));
 
-      const req = {};
+      const mockValidToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4ifQ.sZp-OKP7_NAf1j9FgHt9BFROv0FAKyjTi01_hbXPzWI';
+      
+      const req = { session: { token: mockValidToken }, headers: { authorization: `Bearer ${mockValidToken}` } };
+      
       const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
       await RoleController.postJobRoleForm(req as any, res as any); // eslint-disable-line  @typescript-eslint/no-explicit-any

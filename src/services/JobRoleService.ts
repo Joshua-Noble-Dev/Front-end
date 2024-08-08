@@ -18,12 +18,12 @@ export const getJobRoles = async (token: string): Promise<JobRolesResponse[]> =>
     }
 }
 
-export const createJobRole = async(jobRole: JobRoleRequest): Promise<number> => {
+export const createJobRole = async(jobRole: JobRoleRequest, token: string): Promise<number> => {
 
     validateJobRoleRequest(jobRole);
 
     try {
-        const response: AxiosResponse = await axios.post(URL, jobRole);
+        const response: AxiosResponse = await axios.post(URL, jobRole, getHeader(token));
 
         return response.data;
         

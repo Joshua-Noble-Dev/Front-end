@@ -122,7 +122,7 @@ describe('JobRoleService', function () {
 
         mock.onPost(URL).reply(201,1);
 
-        const result = await createJobRole(jobRoleRequest);
+        const result = await createJobRole(jobRoleRequest, "token");
 
         expect(result).to.deep.equal(1);
 
@@ -132,7 +132,7 @@ describe('JobRoleService', function () {
         mock.onPost(URL).reply(500);
 
       try {
-        await createJobRole(jobRoleRequest);
+        await createJobRole(jobRoleRequest, "token");
       } catch (e) {
         expect(e.message).to.equal('Could not create job role');
         return;
@@ -144,7 +144,7 @@ describe('JobRoleService', function () {
         mock.onPost(URL).reply(400);
 
       try {
-        await createJobRole(jobRoleRequest);
+        await createJobRole(jobRoleRequest, "token");
       } catch (e) {
         expect(e.message).to.equal('Invalid data');
         return;

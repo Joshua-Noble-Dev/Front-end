@@ -44,5 +44,5 @@ app.listen(3000, () => {
 app.get('/jobRoles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
 app.get('/homepage' , allowRoles([UserRole.Admin, UserRole.User]), getHomePage);
 app.get('/jobRoles/:id', allowRoles([UserRole.Admin, UserRole.User]), getSingleJobRole);
-app.get('/jobRoleForm', getJobRoleForm);
-app.post('/jobRoleForm', postJobRoleForm);
+app.get('/jobRoleForm', allowRoles([UserRole.Admin]), getJobRoleForm);
+app.post('/jobRoleForm', allowRoles([UserRole.Admin]), postJobRoleForm);
