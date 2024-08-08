@@ -3,6 +3,7 @@ import { basepage } from './basepage';
 
 describe('View Job Roles Tests', function () {
     this.timeout(1000000);
+    const homepage: string = process.env.UI_TEST_HOME || 'https://jptw3amsi2.eu-west-1.awsapprunner.com/homepage';
     const page: string = process.env.UI_TEST_URL || 'https://jptw3amsi2.eu-west-1.awsapprunner.com/jobRoles';
 
     before(async function () {
@@ -23,11 +24,11 @@ describe('View Job Roles Tests', function () {
 
     it('Footer links should work', async function () {
         try {
-            await ViewJobRolesTestsPage.loadPage(page);
+            await ViewJobRolesTestsPage.loadPage(homepage);
             await ViewJobRolesTestsPage.clickFacebook();
-            await ViewJobRolesTestsPage.assertFBAndGoBack(page);
+            await ViewJobRolesTestsPage.assertFBAndGoBack(homepage);
             await ViewJobRolesTestsPage.clickTwitter();
-            await ViewJobRolesTestsPage.assertTwitterAndGoBack(page);
+            await ViewJobRolesTestsPage.assertTwitterAndGoBack(homepage);
             await ViewJobRolesTestsPage.clickInstagram();
             await ViewJobRolesTestsPage.assertIGAndGoBack(page);
             await ViewJobRolesTestsPage.assertJobRolesTitle();

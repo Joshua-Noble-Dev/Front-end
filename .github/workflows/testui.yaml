@@ -3,7 +3,6 @@ name: Run UI Tests
 on: 
   schedule:
     - cron: '0 0 * * *' # This runs the workflow at midnight UTC every day
-    - cron: '43 12 * * *'
 
 jobs:
   test:

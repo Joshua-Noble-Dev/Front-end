@@ -11,6 +11,7 @@ export class basepage {
         options.addArguments('headless'); // Enable headless mode
         options.addArguments('disable-gpu');
         options.addArguments('no-sandbox');
+        options.addArguments('window-size=1920,1080');
       
         this.driver = new Builder()
             .forBrowser('chrome')
@@ -112,4 +113,3 @@ export class basepage {
 
     
 }
-
