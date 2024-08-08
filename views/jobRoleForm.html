@@ -63,9 +63,9 @@
                         <label class="formbold-form-label" for="bandID">Band</label>
                 
                         <select class="formbold-form-input" name="bandID" id="bandID">
-                            <option value="" disabled selected>{{band}}Select a band</option>
+                            <option value="" disabled selected>Select a band</option>
                             {% for band in bands %}
-                            <option value="{{band.bandID}}">{{band.bandName}}</option>
+                            <option value="{{band.bandID}}" {% if bandID == band.bandID %} selected {% endif %}>{{band.bandName}}</option>
                             {% endfor %}
                         </select>
                         </div>
@@ -76,7 +76,7 @@
                             <select class="formbold-form-input" name="capabilityID" id="capabilityID">
                                 <option value="" disabled selected>Select a capability</option>
                                 {% for capability in capabilities %}
-                                <option value="{{capability.capabilityID}}">{{capability.capabilityName}}</option>
+                                <option value="{{capability.capabilityID}}" {% if capabilityID == capability.capabilityID %} selected {% endif %}>{{capability.capabilityName}}</option>
                                 {% endfor %}
                             </select>
                         </div>

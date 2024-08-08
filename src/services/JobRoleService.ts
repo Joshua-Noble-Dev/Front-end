@@ -36,8 +36,6 @@ export const createJobRole = async(jobRole: JobRoleRequest, token: string): Prom
 }
 
 
-
-
 export const getJobRoleById = async (id: string, token: string): Promise<JobRolesResponse> => {
     try {
         const response: AxiosResponse = await axios.get(URL + id, getHeader(token));
