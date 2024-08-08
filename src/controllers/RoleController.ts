@@ -39,7 +39,7 @@ export const postJobRoleForm = async (req: express.Request, res: express.Respons
         res.locals.errormessage = e.message;
         const bands = await getBands();
         const capabilities = await getCapabilities()
-        const combinedData = { ...req.body, baseURL, capabilities};
+        const combinedData = { ...req.body, baseURL, bands, capabilities};
         res.render('jobRoleForm.html', combinedData);
     }
 }
